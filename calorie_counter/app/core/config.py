@@ -16,6 +16,17 @@ class Settings(BaseSettings):
     jwt_algorithm: str = Field(default="HS256", env="JWT_ALGORITHM")
     jwt_access_token_expire_minutes: int = Field(default=30, env="JWT_ACCESS_TOKEN_EXPIRE_MINUTES")
 
+    usda_api_url: str = Field(..., env="USDA_API_URL")
+    usda_api_key: str = Field(..., env="USDA_API_KEY")
+    usda_page_size: int = Field(default=5, env="USDA_PAGE_SIZE")
+
+    redis_host: str = Field(..., env="REDIS_HOST")
+    redis_port: int = Field(..., env="REDIS_PORT")
+    redis_db: int = Field(..., env="REDIS_DB")
+
+    rate_limit_time: int = Field(default=5, env="RATE_LIMIT_TIME")
+    rate_limit: int = Field(default=1, env="RATE_LIMIT")
+
     class Config:
         env_file = Path(__file__).parent.parent.parent.parent / ".env"
         env_file_encoding = "utf-8"

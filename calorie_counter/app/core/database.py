@@ -1,6 +1,7 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 from app.core.config import settings
+import redis
 
 
 engine = create_async_engine(
@@ -17,3 +18,5 @@ Base = declarative_base()
 async def get_async_db():
     async with SessionLocal() as db:
         yield db
+
+redis_client = redis.Redis(host=settings.redis_host, port=settings.redis_port, db=settings.redis_db)

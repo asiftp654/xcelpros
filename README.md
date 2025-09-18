@@ -155,15 +155,10 @@ Once the application is running, you can access:
 
 - `POST /get-calories` - Get calorie information for a dish (requires authentication)
 
-### Example API Usage
-
-
-
-
 ## Configuration
 
 ### Rate Limiting
 
 The application implements rate limiting per client IP:
-- Default: 1 request per 5 seconds
+- Default: 15 request per 60 seconds
 - Configurable via `RATE_LIMIT` and `RATE_LIMIT_TIME` environment variables
